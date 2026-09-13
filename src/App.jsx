@@ -316,7 +316,7 @@ useEffect(() => {
         </nav>
 
         <img
-          src="/WKA_LOGO.png"
+          src={`${import.meta.env.BASE_URL}WKA_LOGO.png`}
           alt="Warriors Karate Academy logo"
         />
 
@@ -366,7 +366,7 @@ useEffect(() => {
           <div className="sensei-profile">
             <div className="sensei-photo">
               <img
-                src="/sensei-placeholder.jpg"
+                src={`${import.meta.env.BASE_URL}sensei-placeholder.jpg`}
                 alt="Placeholder for Sensei B. Murali Krishna"
               />
             </div>
@@ -613,7 +613,7 @@ useEffect(() => {
         <div className="footer-main">
 
           <div className="footer-brand">
-            <img src="/WKA_LOGO.png" alt="Warriors Karate Academy logo" />
+            <img src={`${import.meta.env.BASE_URL}WKA_LOGO.png`} alt="Warriors Karate Academy logo" />
 
             <div>
               <h3>Warriors Karate Academy</h3>
@@ -647,7 +647,7 @@ useEffect(() => {
               target="_blank"
               rel="noreferrer"
             >
-              <img src="/footer_instagram_icon.svg" alt="Instagram" />
+              <img src={`${import.meta.env.BASE_URL}footer_instagram_icon.svg`} alt="Instagram" />
             </a>
 
             <p>
