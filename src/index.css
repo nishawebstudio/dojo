@@ -154,6 +154,13 @@ h6 {
   text-decoration: none;
 }
 
+.site-header nav a:focus-visible,
+.back-to-top:focus-visible,
+.mobile-menu-toggle:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 4px;
+}
+
 .site-header nav.sticky-nav a {
   padding: 0.8rem 1.8rem;
 

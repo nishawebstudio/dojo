@@ -651,27 +651,27 @@ useEffect(() => {
             <GalleryImage
               className="gallery-feature"
               src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80"
-              alt="Karate training"
+              alt="Karate students training in the dojo"
             />
 
             <GalleryImage
               src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80"
-              alt="Martial arts equipment"
+              alt="Martial arts training session"
             />
 
             <GalleryImage
               src="https://images.unsplash.com/photo-1555597408-26bc8e548a46?q=80&w=1223&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Karate training"
+              alt="Karate practice"
             />
 
             <GalleryImage
               src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80"
-              alt="Training session"
+              alt="Karate training session"
             />
 
             <GalleryImage
               src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
-              alt="Fitness training"
+              alt="Fitness and conditioning training"
             />
           </div>
         </section>
@@ -703,11 +703,47 @@ useEffect(() => {
           <div className="footer-links">
             <h4>Explore</h4>
 
-            <a href="#about">Our Dojo</a>
-            <a href="#sensei">The Sensei</a>
-            <a href="#training">Training</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#events">Events</a>
+            <a
+              href="#about"
+              onClick={(event) => scrollToSection(event, "#about")}
+            >
+              Our Dojo
+            </a>
+
+            <a
+              href="#sensei"
+              onClick={(event) => scrollToSection(event, "#sensei")}
+            >
+              Sensei
+            </a>
+
+            <a
+              href="#training"
+              onClick={(event) => scrollToSection(event, "#training")}
+            >
+              Training
+            </a>
+
+            <a
+              href="#achievements"
+              onClick={(event) => scrollToSection(event, "#achievements")}
+            >
+              Achievements
+            </a>
+
+            <a
+              href="#events"
+              onClick={(event) => scrollToSection(event, "#events")}
+            >
+              Events
+            </a>
+
+            <a
+              href="#gallery"
+              onClick={(event) => scrollToSection(event, "#gallery")}
+            >
+              Gallery
+            </a>
           </div>
 
           <div className="footer-connect">
