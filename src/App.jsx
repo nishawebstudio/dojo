@@ -239,6 +239,8 @@ const events = [
 const headerRef = useRef(null);
 const [isNavSticky, setIsNavSticky] = useState(false);
 const [showBackToTop, setShowBackToTop] = useState(false);
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [activeSection, setActiveSection] = useState("about");
 
 useEffect(() => {
   const observer = new IntersectionObserver(
@@ -260,11 +262,53 @@ useEffect(() => {
 
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
+useEffect(() => {
+  const sections = document.querySelectorAll(
+    "#about, #sensei, #training, #achievements, #events, #gallery"
+  );
+
+  const handleScroll = () => {
+    const activationPoint =
+      window.scrollY + window.innerHeight * 0.35;
+
+    let currentSection = "about";
+
+    sections.forEach((section) => {
+      if (section.offsetTop <= activationPoint) {
+        currentSection = section.id;
+      }
+    });
+
+    setActiveSection(currentSection);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   return (
     <>
       <header ref={headerRef} className="site-header">
-        
-        <nav className={isNavSticky ? "sticky-nav" : ""}>
+        <button
+          className="mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav
+          className={`${isNavSticky ? "sticky-nav" : ""} ${
+            isMobileMenuOpen ? "mobile-menu-open" : ""
+          }`}
+        >
           {/* <a
             href="#home"
             onClick={(event) => scrollToSection(event, "#home")}
@@ -273,43 +317,67 @@ useEffect(() => {
           </a> */}
 
           <a
+            className={activeSection === "about" ? "active" : ""}
             href="#about"
-            onClick={(event) => scrollToSection(event, "#about")}
+            onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#about");
+            }}
           >
             Our Dojo
           </a>
 
           <a
+            className={activeSection === "sensei" ? "active" : ""}
             href="#sensei"
-            onClick={(event) => scrollToSection(event, "#sensei")}
+            onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#sensei");
+            }}
           >
             Sensei
           </a>
 
           <a
+            className={activeSection === "training" ? "active" : ""}
             href="#training"
-            onClick={(event) => scrollToSection(event, "#training")}
+            onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#training");
+            }}
           >
             Training
           </a>
 
           <a
+            className={activeSection === "achievements" ? "active" : ""}
             href="#achievements"
-            onClick={(event) => scrollToSection(event, "#achievements")}
+           onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#achievements");
+            }}
           >
             Achievements
           </a>
 
           <a
+            className={activeSection === "events" ? "active" : ""}
             href="#events"
-            onClick={(event) => scrollToSection(event, "#events")}
+            onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#events");
+            }}
           >
             Events
           </a>
 
           <a
+            className={activeSection === "gallery" ? "active" : ""}
             href="#gallery"
-            onClick={(event) => scrollToSection(event, "#gallery")}
+            onClick={(event) => {
+              setIsMobileMenuOpen(false);
+              scrollToSection(event, "#gallery");
+            }}
           >
             Gallery
           </a>
@@ -613,20 +681,23 @@ useEffect(() => {
         <div className="footer-main">
 
           <div className="footer-brand">
-            <img src={`${import.meta.env.BASE_URL}WKA_LOGO.png`} alt="Warriors Karate Academy logo" />
 
-            <div>
-              <h3>Warriors Karate Academy</h3>
+            <img
+              src={`${import.meta.env.BASE_URL}WKA_LOGO.png`}
+              alt="Warriors Karate Academy logo"
+            />
 
-              <p className="footer-tagline">
-                Discipline. Character. Fitness.
-              </p>
+            <h3>Warriors Karate Academy</h3>
 
-              <p className="footer-location">
-                Near New SRO, Chinnamushidiwada,<br />
-                Visakhapatnam – 530051
-              </p>
-            </div>
+            <p className="footer-tagline">
+              Discipline. Character. Fitness.
+            </p>
+
+            <p className="footer-location">
+              Near New SRO, Chinnamushidiwada,<br />
+              Visakhapatnam – 530051
+            </p>
+
           </div>
 
           <div className="footer-links">
